@@ -1,4 +1,4 @@
-/* 
+/*
     Document   : Undecorator
     Created on : Dec 19, 2014
     Author     : In-SideFX
@@ -44,3 +44,13 @@
     -fx-border-width: 7;
     -fx-border-insets: 0;
 }
+/*
+.zona {
+	-fx-background-color: blue;
+	-fx-border-color: #1d1d1d;
+}
+
+.pane-background{
+	-fx-border-color: red;
+
+}*/

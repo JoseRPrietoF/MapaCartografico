@@ -19,7 +19,7 @@ import javafx.stage.StageStyle;
  * @author dibosjor
  */
 public class Trabajo extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
         //Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -27,12 +27,12 @@ public class Trabajo extends Application {
         Parent root = (Parent) cargador.load();
 
         FXMLDocumentController controlador = cargador.getController();
-        
+
         UndecoratorScene undecorated = new UndecoratorScene(stage, (Region) root);
      //   Scene scene = new Scene(root);
         controlador.setUndecorator(undecorated);
-     
-        
+
+
         stage.setScene(undecorated);
         stage.show();
     }
@@ -43,5 +43,5 @@ public class Trabajo extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
@@ -9,7 +17,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#teclaPulsada" onMouseClicked="#eventoClick" prefHeight="548.0" prefWidth="887.0" styleClass="pane-background" stylesheets="@demoapp.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="trabajo.FXMLDocumentController">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#teclaPulsada" onMouseClicked="#eventoClick" prefHeight="548.0" prefWidth="887.0" styleClass="pane-background" stylesheets="@demoapp.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="trabajo.FXMLDocumentController">
    <children>
       <Group fx:id="angulos" layoutX="134.0" layoutY="436.0">
          <children>
@@ -149,6 +157,6 @@
             </Label>
          </children>
       </Group>
-      <Pane fx:id="zonaDibujo" opacity="0.0" prefHeight="555.0" prefWidth="894.0" />
+      <Pane fx:id="zonaDibujo" layoutX="-3.0" layoutY="-3.0" prefHeight="558.0" prefWidth="897.0" styleClass="zona" stylesheets="@demoapp.css" />
    </children>
 </Pane>

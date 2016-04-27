@@ -16,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -42,7 +44,7 @@ public class FXMLDocumentController implements Initializable {
     private final double ALTURA = rec.getWidth();
     private final double LONGITUD = rec.getHeight();
 
-    private int rango = 20;
+    private int rango = 200;
 
     double orgSceneX;
 
@@ -55,20 +57,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Circle circleSrc;
 
-
-    //private UndecoratorScene undecorator;
     @FXML
     private Pane zonaDibujo;
 
-    //Stage stage = (Stage) pane.getScene().getWindow();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        //zonaDibujo.setOnMousePressed(escogerNodo);
-
-
-        //zonaDibujo.setOnMouseDragged(OnMouseDraggedEventHandler);
-        // zonaDibujo.setOnMousePressed(eventoDibujar);
 
         zonaDibujo.setOnMousePressed(e -> {
         	zonaDibujo.toFront();
@@ -78,22 +71,29 @@ public class FXMLDocumentController implements Initializable {
             	//borrarLinea(buscarCentro(e.getX(), e.getY()));
 
             //}
-        });
+            else if(e.getButton() == MouseButton.MIDDLE){
+            	int cruz = buscarCentro(e.getX(), e.getY());
+            	if (cruz == -1) return;
+                Cruz c = listaLineas.get(cruz);
 
-        if(DEBUG)
-	        zonaDibujo.setOnMouseMoved(e -> {
-	        	zonaDibujo.toFront();
-	        	double newMouseX = e.getX();
-                double newMouseY = e.getY();
-                System.out.println("x : " + newMouseX);
-                System.out.println("y : " + newMouseY);
-	        });
+                Centro centro = c.getCentro();
+
+                if(DEBUG){
+                	Alert alert = new Alert(AlertType.INFORMATION);
+                	alert.setTitle("Situacion");
+                	alert.setHeaderText("X: " + e.getX() + " Y: " + e.getY());
+                	alert.setContentText(centro.toString());
+
+                	alert.showAndWait();
+                }
+                System.out.println(cruz);
+            }
+        });
 
         zonaDibujo.setOnMouseDragged(e -> {
         	zonaDibujo.toFront();
             if (e.getButton() == MouseButton.SECONDARY) {
             	int cruz = buscarCentro(e.getX(), e.getY());
-            	System.out.println(cruz);
             	if (cruz == -1) return;
             	double newMouseX = e.getX();
                 double newMouseY = e.getY();
@@ -104,25 +104,30 @@ public class FXMLDocumentController implements Initializable {
                 Line hc = c.getLineaHorizontalCentral();
                 Line vc = c.getLineaVerticalCentral();
 
+                double deltaX = newMouseX - v.getStartX();
+                double deltaY = newMouseY - h.getStartY();
 
-                double deltaX = newMouseX - hc.getStartX();
-                double deltaY = newMouseY - hc.getStartY(); // esta bien
+                double deltaXh = newMouseX - ((hc.getStartX() + hc.getEndX())/2);
+                double deltaYh = newMouseY - ((hc.getStartY() + hc.getEndY())/2);
 
-                Centro centro = c.getCentro();
-
+                double deltaXv = newMouseX - ((vc.getStartX() + vc.getEndX())/2);
+                double deltaYv = newMouseY - ((vc.getStartY() + vc.getEndY())/2);
                 // lineas grandes
-                h.setTranslateY(deltaY);
-                v.setTranslateX(deltaX);
-
+                h.setTranslateY( deltaY);
+                v.setTranslateX( deltaX);
                 // cruz
-                hc.setTranslateX(deltaX);
-                hc.setTranslateY(deltaY);
-                vc.setTranslateX(deltaX);
-                vc.setTranslateY(deltaY);
-
-                c.getCentro().setX(centro.getX() + deltaX);
-                c.getCentro().setY(centro.getY() + deltaY);
-                //System.out.println(c.getCentro());
+                hc.setTranslateX(deltaXh);
+                hc.setTranslateY(deltaYh);
+                vc.setTranslateX(deltaXv);
+                vc.setTranslateY(deltaYv );
+                if(DEBUG){
+                    System.out.println("-----Translated------");
+                    System.out.println("hc.getTranslateX() " + hc.getTranslateX() + " hc.getTranslateY() " + hc.getTranslateY());
+                    System.out.println("X: " + deltaXh + " Y: " + deltaYh);
+                    System.out.println("Estoy en hc " + hc.getStartX() + "   " + hc.getStartY());
+                    System.out.println("Estoy en vc " + vc.getStartX() + "   " + vc.getStartY());
+                    System.out.println("-------------------------");
+                }
             }
         });
 
@@ -133,14 +138,21 @@ public class FXMLDocumentController implements Initializable {
     }
 
     private void dibujarLinea(double x, double y) {
-        //Scene scene = pane.getScene();
         Cruz cruz = new Cruz(x, y, ALTURA, LONGITUD);
         ObservableList<Node> hijos = pane.getChildren();
 
-        hijos.add(cruz.getLineaHorizontal());
-        hijos.add(cruz.getLineaVertical());
-        hijos.add(cruz.getLineaHorizontalCentral());
-        hijos.add(cruz.getLineaVerticalCentral());
+        Line l = cruz.getLineaHorizontal();
+        hijos.add(l);
+
+        l = cruz.getLineaVertical();
+        hijos.add(l);
+
+        l = cruz.getLineaHorizontalCentral();
+        hijos.add(l);
+
+        l = cruz.getLineaVerticalCentral();
+        hijos.add(l);
+
         listaLineas.add(cruz);
     }
 
