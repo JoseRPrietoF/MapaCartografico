@@ -12,6 +12,7 @@ package modelo;
 public class Centro {
     private double x;
     private double y;
+	public int xxxx;
 
     public Centro(double x, double y) {
         this.x = x;
@@ -22,7 +23,7 @@ public class Centro {
     }
 
     public double getX() {
-        return x;
+        return    x;
     }
     public double getY() {
         return y;
