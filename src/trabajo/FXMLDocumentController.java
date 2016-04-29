@@ -34,7 +34,7 @@ import modelo.Cruz;
  */
 public class FXMLDocumentController implements Initializable {
 
-	private final boolean DEBUG = true;
+	private final boolean DEBUG = false;
 
     private ArrayList<Cruz> listaLineas = new ArrayList<Cruz>();
     @FXML
@@ -44,7 +44,7 @@ public class FXMLDocumentController implements Initializable {
     private final double ALTURA = rec.getWidth();
     private final double LONGITUD = rec.getHeight();
 
-    private int rango = 200;
+    private int rango = 20;
 
     double orgSceneX;
 
@@ -60,8 +60,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Pane zonaDibujo;
 
+    private int selected = -1;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+
 
         zonaDibujo.setOnMousePressed(e -> {
         	zonaDibujo.toFront();
@@ -91,10 +95,17 @@ public class FXMLDocumentController implements Initializable {
         });
 
         zonaDibujo.setOnMouseDragged(e -> {
+        	System.out.println("Exited");
+        	selected = -1;
+
+        });
+
+        zonaDibujo.setOnMouseDragged(e -> {
         	zonaDibujo.toFront();
             if (e.getButton() == MouseButton.SECONDARY) {
             	int cruz = buscarCentro(e.getX(), e.getY());
             	if (cruz == -1) return;
+            	selected = cruz;
             	double newMouseX = e.getX();
                 double newMouseY = e.getY();
                 Cruz c = listaLineas.get(cruz);
@@ -196,10 +207,10 @@ public class FXMLDocumentController implements Initializable {
         for (int i = 0; i < listaLineas.size(); i++) {
             c = listaLineas.get(i);
             centroX = c.getLineaVerticalCentral().getTranslateX();
-            System.out.println("busco x en " + centroX + " x vale: " + x);
+            //System.out.println("busco x en " + centroX + " x vale: " + x);
             if (Math.abs(centroX - x) <= rango) {
-                centroY = c.getLineaVerticalCentral().getTranslateY();
-                System.out.println("busco y en " + centroY + " y vale: " + y);
+                centroY = c.getLineaHorizontalCentral().getTranslateY();
+                //System.out.println("busco y en " + centroY + " y vale: " + y);
                 if (Math.abs(centroY - y) <= rango) {
                     return i;
                 }

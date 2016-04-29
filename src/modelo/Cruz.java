@@ -29,45 +29,37 @@ public class Cruz {
         centro = new Centro(x,y);
 
 
-        lineaVertical = construirVertical(x,screenHeight);
-        lineaHorizontalCentral = construirVerticalCentral(x,y);
-        lineaVerticalCentral = construirHorizontalCentral(x,y);
-        lineaHorizontal = contruirHorizontal(screenWidth,y);
+        construirVertical(x,screenHeight);
+        construirVerticalCentral(x,y);
+        construirHorizontalCentral(x,y);
+        contruirHorizontal(screenWidth,y);
     }
 
-    public Line construirVertical(double x, double altura) {
-
-        Line lineaV = new Line(0,0,0,altura);
-        lineaV.setStroke(Color.RED);
-        lineaV.setStrokeWidth(0.5);
-
-        lineaV.setTranslateX(x);
-        return lineaV;
+    public void construirVertical(double x, double altura) {
+        lineaVertical = new Line(0,0,0,altura);
+        lineaVertical.setStroke(Color.RED);
+        lineaVertical.setStrokeWidth(0.5);
+        lineaVertical.setTranslateX(x);
     }
 
-    public Line construirVerticalCentral(double x,double y) {
-        Line lineaVC = new Line (0,y-5,0,y+5);
-        lineaVC.setStroke(Color.RED);
-        lineaVC.setStrokeWidth(0.8);
-        lineaVC.setTranslateX(x);
-        return lineaVC;
+    public void construirVerticalCentral(double x,double y) {
+        lineaVerticalCentral = new Line (0,y-5,0,y+5);
+        lineaVerticalCentral.setStroke(Color.DARKBLUE);
+        lineaVerticalCentral.setStrokeWidth(0.8);
+        lineaVerticalCentral.setTranslateX(x);
     }
-    public Line construirHorizontalCentral(double x,double y) {
-        Line lineaHC = new Line (x-5,0,x+5,0);
-        lineaHC.setStroke(Color.RED);
-        lineaHC.setStrokeWidth(0.8);
-        lineaHC.setTranslateX(x);
-        return lineaHC;
+    public void construirHorizontalCentral(double x,double y) {
+        lineaHorizontalCentral = new Line (x-5,0,x+5,0);
+        lineaHorizontalCentral.setStroke(Color.DARKBLUE);
+        lineaHorizontalCentral.setStrokeWidth(0.8);
+        lineaHorizontalCentral.setTranslateY(y);
     }
 
-    private Line contruirHorizontal(double longitud, double y) {
-        Line lineaH;
-
-        lineaH = new Line(0,0,longitud,0);
-        lineaH.setStroke(Color.RED);
-        lineaH.setStrokeWidth(0.5);
-        lineaH.setTranslateY(y);
-        return lineaH;
+    private void contruirHorizontal(double longitud, double y) {
+        lineaHorizontal = new Line(0,0,longitud,0);
+        lineaHorizontal.setStroke(Color.RED);
+        lineaHorizontal.setStrokeWidth(0.5);
+        lineaHorizontal.setTranslateY(y);
     }
 
     public void dibujarVertical(AnchorPane anchor) {
