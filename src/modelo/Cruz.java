@@ -15,9 +15,8 @@ import javafx.scene.shape.Line;
  * @author dibosjor
  */
 public class Cruz {
+
     private Line lineaVertical;
-
-
 	private Line lineaHorizontal;
     private Line lineaVerticalCentral;
     private Line lineaHorizontalCentral;
@@ -38,55 +37,44 @@ public class Cruz {
 
     public Line construirVertical(double x, double altura) {
 
-        Line lineaV = new Line(x,0,x,altura);
+        Line lineaV = new Line(0,0,0,altura);
         lineaV.setStroke(Color.RED);
         lineaV.setStrokeWidth(0.5);
+
+        lineaV.setTranslateX(x);
         return lineaV;
     }
 
     public Line construirVerticalCentral(double x,double y) {
-        Line lineaVC = new Line (x,y-5,x,y+5);
+        Line lineaVC = new Line (0,y-5,0,y+5);
         lineaVC.setStroke(Color.RED);
         lineaVC.setStrokeWidth(0.8);
+        lineaVC.setTranslateX(x);
         return lineaVC;
     }
     public Line construirHorizontalCentral(double x,double y) {
-        Line lineaHC = new Line (x-5,y,x+5,y);
+        Line lineaHC = new Line (x-5,0,x+5,0);
         lineaHC.setStroke(Color.RED);
         lineaHC.setStrokeWidth(0.8);
+        lineaHC.setTranslateX(x);
         return lineaHC;
     }
-    public void dibujarVertical(AnchorPane anchor) {
-        anchor.getChildren().add(lineaVertical);
-    }
-
-    /*
-    private void dibujarLinea(double x, double x) {
-        double longitud = anchor.getScene().getWidth();
-        double altura = anchor.getScene().getHeight();
-
-
-        Line lineaH = new Line(0,y,longitud,y);
-        lineaH.setStroke(Color.RED);
-        lineaH.setStrokeWidth(0.5);
-        Line lineaV = new Line(x,0,x,altura);
-        lineaV.setStroke(Color.RED);
-        lineaV.setStrokeWidth(0.5);
-
-        anchor.getChildren().add(lineaH);
-        anchor.getChildren().add(lineaV);*/
-
-
 
     private Line contruirHorizontal(double longitud, double y) {
         Line lineaH;
 
-        lineaH = new Line(0,y,longitud,y);
+        lineaH = new Line(0,0,longitud,0);
         lineaH.setStroke(Color.RED);
         lineaH.setStrokeWidth(0.5);
-
+        lineaH.setTranslateY(y);
         return lineaH;
     }
+
+    public void dibujarVertical(AnchorPane anchor) {
+        anchor.getChildren().add(lineaVertical);
+    }
+
+
     public void dibujarHorizontal(AnchorPane anchor) {
         anchor.getChildren().add(lineaHorizontal);
     }
@@ -129,6 +117,13 @@ public class Cruz {
 
 	public void setCentro(Centro centro) {
 		this.centro = centro;
+	}
+
+	@Override
+	public String toString() {
+		return "Cruz [lineaVertical=" + lineaVertical.getTranslateX() + ", lineaHorizontal=" + lineaHorizontal.getTranslateY()
+				+ ", lineaVerticalCentral=" + lineaVerticalCentral.getTranslateX() + ", lineaHorizontalCentral="
+				+ lineaHorizontalCentral.getTranslateY() + "]";
 	}
 
 

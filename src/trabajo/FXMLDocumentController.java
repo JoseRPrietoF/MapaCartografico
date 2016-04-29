@@ -34,7 +34,7 @@ import modelo.Cruz;
  */
 public class FXMLDocumentController implements Initializable {
 
-	private final boolean DEBUG = false;
+	private final boolean DEBUG = true;
 
     private ArrayList<Cruz> listaLineas = new ArrayList<Cruz>();
     @FXML
@@ -127,9 +127,15 @@ public class FXMLDocumentController implements Initializable {
                     System.out.println("Estoy en hc " + hc.getStartX() + "   " + hc.getStartY());
                     System.out.println("Estoy en vc " + vc.getStartX() + "   " + vc.getStartY());
                     System.out.println("-------------------------");
+                    System.out.println(c);
                 }
             }
         });
+        if(DEBUG)
+	        zonaDibujo.setOnMouseMoved(e -> {
+	        	System.out.println("X: " + e.getX() + " Y: " + e.getY());
+
+	        });
 
     }
 
@@ -185,14 +191,15 @@ public class FXMLDocumentController implements Initializable {
     }
 
     private int buscarCentro(double x, double y) {
-        Centro centro;
+        Cruz c;
         double centroX, centroY;
         for (int i = 0; i < listaLineas.size(); i++) {
-            centro = listaLineas.get(i).getCentro();
-            centroX = centro.getX();
-
+            c = listaLineas.get(i);
+            centroX = c.getLineaVerticalCentral().getTranslateX();
+            System.out.println("busco x en " + centroX + " x vale: " + x);
             if (Math.abs(centroX - x) <= rango) {
-                centroY = centro.getY();
+                centroY = c.getLineaVerticalCentral().getTranslateY();
+                System.out.println("busco y en " + centroY + " y vale: " + y);
                 if (Math.abs(centroY - y) <= rango) {
                     return i;
                 }
