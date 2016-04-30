@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
@@ -18,6 +19,7 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.DragEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -71,40 +73,28 @@ public class FXMLDocumentController implements Initializable {
         	zonaDibujo.toFront();
             if (e.getButton() == MouseButton.PRIMARY) {
             	dibujarLinea(e.getX(), e.getY());
-            } //else if (e.getButton() == MouseButton.SECONDARY) {
-            	//borrarLinea(buscarCentro(e.getX(), e.getY()));
+            } else if (e.getButton() == MouseButton.SECONDARY) {
+            	borrarLinea(buscarCentro(e.getX(), e.getY()));
 
-            //}
-            else if(e.getButton() == MouseButton.MIDDLE){
+            } else if(e.getButton() == MouseButton.MIDDLE){
             	int cruz = buscarCentro(e.getX(), e.getY());
             	if (cruz == -1) return;
-                Cruz c = listaLineas.get(cruz);
-
-                Centro centro = c.getCentro();
-
-                if(DEBUG){
-                	Alert alert = new Alert(AlertType.INFORMATION);
-                	alert.setTitle("Situacion");
-                	alert.setHeaderText("X: " + e.getX() + " Y: " + e.getY());
-                	alert.setContentText(centro.toString());
-
-                	alert.showAndWait();
-                }
-                System.out.println(cruz);
+            	selected = cruz;
             }
         });
 
-        zonaDibujo.setOnMouseDragged(e -> {
-        	System.out.println("Exited");
-        	selected = -1;
-
+        zonaDibujo.setOnMouseReleased(e -> {
+        	if(e.getButton() == MouseButton.MIDDLE){
+        		selected = -1;
+        	}
         });
 
         zonaDibujo.setOnMouseDragged(e -> {
         	zonaDibujo.toFront();
-            if (e.getButton() == MouseButton.SECONDARY) {
-            	int cruz = buscarCentro(e.getX(), e.getY());
-            	if (cruz == -1) return;
+
+        	if (e.getButton() == MouseButton.MIDDLE) {
+            	int cruz = selected;
+            	if (selected == -1 || cruz == -1) return;
             	selected = cruz;
             	double newMouseX = e.getX();
                 double newMouseY = e.getY();
@@ -142,6 +132,7 @@ public class FXMLDocumentController implements Initializable {
                 }
             }
         });
+
         if(DEBUG)
 	        zonaDibujo.setOnMouseMoved(e -> {
 	        	System.out.println("X: " + e.getX() + " Y: " + e.getY());
