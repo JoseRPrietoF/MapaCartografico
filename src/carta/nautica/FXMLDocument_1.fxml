@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="548.0" prefWidth="887.0" styleClass="clientarea-background" stylesheets="@demoapp.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Group fx:id="angulos" layoutX="134.0" layoutY="436.0">
+         <children>
+            <Circle fx:id="circleSrc" fill="#2a619000" layoutY="1.0" mouseTransparent="true" radius="64.0" stroke="#868686" strokeType="INSIDE" strokeWidth="15.0" />
+            <Line endX="20.0" layoutX="50.0" startX="-27.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Line>
+            <Line endX="17.0" layoutX="-40.0" startX="-30.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Line>
+            <Line endY="20.0" layoutY="-42.0" startY="-30.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Line>
+            <Line endY="20.0" layoutY="53.0" startY="-30.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Line>
+            <Line endX="-22.0" opacity="0.39" startX="22.0" />
+            <Line endY="-21.0" opacity="0.39" startY="21.0" />
+            <Line endX="5.0" endY="5.0" fill="#472780" layoutX="-22.0" layoutY="-22.0" startX="-30.0" startY="-30.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Line>
+            <Line endX="20.0" endY="20.0" fill="#472780" layoutX="31.0" layoutY="32.0" startX="-15.0" startY="-15.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Line>
+            <Line endX="20.0" endY="20.0" opacity="0.39" startX="-30.0" startY="-30.0" />
+            <Circle fill="DODGERBLUE" opacity="0.15" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+            <Line endX="5.0" endY="5.0" fill="BLACK" layoutX="48.0" layoutY="-22.0" rotate="90.0" startX="-30.0" startY="-30.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Line>
+            <Line endX="20.0" endY="20.0" fill="BLACK" layoutX="-36.0" layoutY="32.0" rotate="90.0" startX="-15.0" startY="-15.0">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Line>
+            <Line endX="20.0" endY="20.0" fill="BLACK" layoutX="5.0" layoutY="6.0" opacity="0.39" rotate="90.0" startX="-30.0" startY="-30.0" />
+            <Line endX="17.0" endY="17.0" fill="BLACK" opacity="0.39" startX="-17.0" startY="-17.0" stroke="#111cff" />
+            <Line endX="-22.0" opacity="0.39" rotate="60.0" startX="22.0" stroke="#2b00ed" />
+            <Line endX="-22.0" opacity="0.39" rotate="30.0" startX="22.0" stroke="#3700ff" />
+            <Line endX="-22.0" opacity="0.39" rotate="120.0" startX="22.0" stroke="#3700ff" />
+            <Line endX="-22.0" opacity="0.39" rotate="150.0" startX="22.0" stroke="#3700ff" />
+            <Line endX="20.0" layoutX="27.0" layoutY="40.0" rotate="60.0" startX="-27.0" stroke="#1f15dd">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Line>
+            <Line endX="20.0" layoutX="-20.0" layoutY="-40.0" rotate="60.0" startX="-27.0" stroke="#1f15dd">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Line>
+            <Line endX="20.0" layoutX="-20.0" layoutY="40.0" rotate="120.0" startX="-27.0" stroke="#1f15dd">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Line>
+            <Line endX="20.0" layoutX="45.0" layoutY="-24.0" rotate="150.0" startX="-27.0" stroke="#1f15dd">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Line>
+            <Line endX="20.0" layoutX="-38.0" layoutY="24.0" rotate="150.0" startX="-27.0" stroke="#1f15dd">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Line>
+            <Line endX="20.0" layoutX="27.0" layoutY="-40.0" rotate="120.0" startX="-27.0" stroke="#1f15dd">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Line>
+            <Line endX="20.0" layoutX="-37.0" layoutY="-23.0" rotate="30.0" startX="-27.0" stroke="#1f15dd">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Line>
+            <Line endX="20.0" layoutX="44.0" layoutY="23.0" rotate="30.0" startX="-27.0" stroke="#1f15dd">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Line>
+            <Label layoutX="19.0" layoutY="-55.0" text="60" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="-33.0" text="30" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="-37.0" layoutY="-55.0" text="120" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="-60.0" layoutY="-27.0" text="150" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="-58.0" layoutY="18.0" text="210" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="-32.0" layoutY="44.0" text="240" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="25.0" layoutY="40.0" text="300" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="19.0" prefHeight="15.0" prefWidth="25.0" text="330" textFill="WHITE">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets right="3.0" />
+               </opaqueInsets>
+            </Label>
+         </children>
+      </Group>
+      <Pane fx:id="zonaDibujo" opacity="0.0" prefHeight="555.0" prefWidth="894.0" styleClass="dibujo" stylesheets="@demoapp.css" />
+   </children>
+</Pane>
